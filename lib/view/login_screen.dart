@@ -65,6 +65,16 @@ class LoginScreen extends StatelessWidget {
                       border: OutlineInputBorder()
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                        onTap: (){},
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          child: const Text("Não possui cadastro ainda?",
+                          style: TextStyle(color: Colors.lightBlue),),
+                        )),
+                  ),
                 ],
               )),
             ),
