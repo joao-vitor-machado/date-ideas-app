@@ -28,7 +28,7 @@ class CadastroScreen extends StatelessWidget {
               )),
               Container(
                   child: const Text(
-                "DATE",
+                "DATE?",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
@@ -48,23 +48,30 @@ class CadastroScreen extends StatelessWidget {
                               fontSize: 20, color: Colors.deepPurpleAccent),
                         ),
                       ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       nameFormField(),
                       const SizedBox(
-                        height: 30,
+                        height: 20,
                       ),
-                      //slider idade
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Idade",
+                          style: TextStyle(
+                              fontSize: 20, color: Colors.deepPurpleAccent),
+                        ),
+                      ),
                       Slider(
                         value: _currentSliderValue,
-                        onChanged: (double value) {
-                          setState(() {
-                            _currentSliderValue = value;
-                          });
-                        },
+                        onChanged: (null),
                         min: 0,
                         max: 100,
+                        activeColor: Colors.deepPurpleAccent, //tá cinza (?)
                       ),
                       const SizedBox(
-                        height: 30,
+                        height: 20,
                       ),
                       const Align(
                           alignment: Alignment.centerLeft,
@@ -73,9 +80,12 @@ class CadastroScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 20, color: Colors.deepPurpleAccent),
                           )),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       usernameFormField(),
                       const SizedBox(
-                        height: 30,
+                        height: 20,
                       ),
                       const Align(
                           alignment: Alignment.centerLeft,
@@ -84,6 +94,9 @@ class CadastroScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 20, color: Colors.deepPurpleAccent),
                           )),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       passwordFormField(),
                       const SizedBox(
                         height: 30,
@@ -109,7 +122,7 @@ class CadastroScreen extends StatelessWidget {
             borderSide: BorderSide(
           color: Colors.deepPurpleAccent,
         )),
-        labelText: "Example Name",
+        hintText: "Example Name",
       ),
     );
   }
@@ -133,7 +146,7 @@ class CadastroScreen extends StatelessWidget {
             borderSide: BorderSide(
           color: Colors.deepPurpleAccent,
         )),
-        labelText: "Username",
+        hintText: "Username",
       ),
     );
   }
@@ -157,14 +170,32 @@ class CadastroScreen extends StatelessWidget {
             borderSide: BorderSide(
           color: Colors.deepPurpleAccent,
         )),
-        labelText: "******",
+        hintText: "******",
       ),
     );
   }
 
   Widget submitButton() {
     return ElevatedButton(
-      child: const Text("Próximo"),
+      child: Container(
+        width: 100,
+        height: 40,
+        child: Row(
+          children: const [
+            Text("Próximo"),
+            SizedBox(
+              width: 20,
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Icon(
+                Icons.arrow_forward,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+      ),
       onPressed: () {
         if (formKey.currentState!.validate()) {
           formKey.currentState!.save();
