@@ -25,11 +25,13 @@ class DateCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: Container(
-
             height: screen.height * 0.2,
-            width: screen.width * 0.85,
+            width: screen.width * 0.9,
             decoration: BoxDecoration(
-              color: tema.primary,
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [tema.primary, Colors.deepPurpleAccent],),
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
             child: Padding(

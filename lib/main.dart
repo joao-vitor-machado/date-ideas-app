@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: tema.copyWith(
         colorScheme: tema.colorScheme.copyWith(
-          primary: Colors.deepPurpleAccent,
+          primary: Color.fromRGBO(177, 0, 255, 1),
           secondary: Colors.white,
           tertiary: Colors.grey,
         )
