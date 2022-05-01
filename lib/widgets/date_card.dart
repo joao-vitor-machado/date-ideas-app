@@ -1,5 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:trabalho_fibal_mob_2022/model/Date.dart';
+
+import '../model/mock/dates_mock.dart';
 
 class DateCard extends StatelessWidget {
   final DateApp dateApp;
@@ -9,8 +12,9 @@ class DateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tema = Theme.of(context).colorScheme;
     final screen = MediaQuery.of(context).size;
+    final tema = Theme.of(context).colorScheme;
+
 
     Widget dateElementsListGenerate(List<String> list){
       return Column(
@@ -39,7 +43,7 @@ class DateCard extends StatelessWidget {
               child: Column(
                 children: [
                     Row(
-                      children: [Text("Nome do Date",
+                      children: [Text(dateApp.nome,
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

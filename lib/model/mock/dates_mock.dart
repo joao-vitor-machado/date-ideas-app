@@ -12,7 +12,7 @@ class DateMock {
     ),
     DateApp(
       nome: "Date Sid",
-      data: DateTime.utc(2022, 5, 7),
+      data: DateTime.now(),
       salgados: ["Coxinha", "Pão de queijo"],
       doces: ["chocolate milka"],
       bebidas: ["Refrigerante"],
