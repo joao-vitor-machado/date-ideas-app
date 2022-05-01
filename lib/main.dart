@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_fibal_mob_2022/view/login_screen.dart';
+import 'view/cadastro_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,27 +9,23 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static final tema = ThemeData(
-    brightness: Brightness.light
-  );
+  static final tema = ThemeData(brightness: Brightness.light);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: "/",
+      initialRoute: "/cadastro",
       routes: {
-        LoginScreen.route : (context) => const LoginScreen(),
+        LoginScreen.route: (context) => const LoginScreen(),
+        CadastroScreen.route: (context) => CadastroScreen(),
       },
       title: 'Flutter Demo',
       theme: tema.copyWith(
-        colorScheme: tema.colorScheme.copyWith(
-          primary: Colors.deepPurpleAccent,
-          secondary: Colors.white,
-          tertiary: Colors.grey,
-        )
-      ),
+          colorScheme: tema.colorScheme.copyWith(
+        primary: Colors.deepPurpleAccent,
+        secondary: Colors.white,
+        tertiary: Colors.grey,
+      )),
     );
   }
 }
-
-
