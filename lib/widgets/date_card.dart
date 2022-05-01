@@ -23,10 +23,10 @@ class DateCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(1.0),
           child: Container(
             height: screen.height * 0.2,
-            width: screen.width * 0.9,
+            width: screen.width * 0.75,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -50,7 +50,7 @@ class DateCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Column(
                             children: [
@@ -70,16 +70,6 @@ class DateCard extends StatelessWidget {
                                     fontWeight: FontWeight.bold
                                 ),),
                               dateElementsListGenerate(dateApp.doces)
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Text("Bebidas",
-                                style: TextStyle(
-                                    color: tema.secondary,
-                                    fontWeight: FontWeight.bold
-                                ),),
-                              dateElementsListGenerate(dateApp.bebidas)
                             ],
                           ),
                         ],
