@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_fibal_mob_2022/model/login.dart';
+import 'package:trabalho_fibal_mob_2022/widgets/slider_bar_widget.dart';
 
 class CadastroScreen extends StatelessWidget {
   static const route = "/cadastro";
-  double _currentSliderValue = 18;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final LoginData loginData =
       LoginData(name: "", age: 0, username: "", password: "");
+
+  final SliderBar sliderBar = const SliderBar();
 
   CadastroScreen({Key? key}) : super(key: key);
 
@@ -63,13 +65,8 @@ class CadastroScreen extends StatelessWidget {
                               fontSize: 20, color: Colors.deepPurpleAccent),
                         ),
                       ),
-                      Slider(
-                        value: _currentSliderValue,
-                        onChanged: (null),
-                        min: 0,
-                        max: 100,
-                        activeColor: Colors.deepPurpleAccent, //tá cinza (?)
-                      ),
+                      //slider
+                      sliderBar,
                       const SizedBox(
                         height: 20,
                       ),
