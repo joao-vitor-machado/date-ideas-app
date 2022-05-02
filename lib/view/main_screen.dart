@@ -109,7 +109,7 @@ class MainScreen extends StatelessWidget {
                 width: screen.width * 0.9,
                 height: screen.height * 0.35,
                 child: ListView(
-                  children: DateMock.dates.map((element) => DateTile(nomeDate: element.nome, dataDate: element.data)).toList(),
+                  children: DateMock.dates.map((element) => DateTile(dataApp: element)).toList(),
                 ),
               ),
             )

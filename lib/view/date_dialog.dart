@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/date_picker.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/number_picker_widget.dart';
 
-class NewDateDialog extends StatelessWidget {
-  const NewDateDialog({Key? key}) : super(key: key);
+import '../model/Date.dart';
+
+class DateDialog extends StatelessWidget {
+  DateApp dateApp;
+  DateDialog({Key? key, required this.dateApp}) : super(key: key);
 
 
 
@@ -13,6 +16,13 @@ class NewDateDialog extends StatelessWidget {
     final screen = MediaQuery.of(context).size;
 
     DateTime data = DateTime.now();
+
+
+    Widget listElements(List<String> elements){
+      return Column(
+        children: elements.map((element) => Text(element)).toList(),
+      );
+    }
 
     return Dialog(
       elevation: 2,
@@ -32,7 +42,7 @@ class NewDateDialog extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("Crie seu Date",
+                child: Text("Seu Date",
                   style: TextStyle(
                     color: tema.primary,
                     fontWeight: FontWeight.bold,
@@ -55,6 +65,7 @@ class NewDateDialog extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
+                initialValue: dateApp.nome,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5),
@@ -101,20 +112,20 @@ class NewDateDialog extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Text("Salagado"),
+                          Text("Salagado", style: TextStyle(color: tema.primary),),
                           SizedBox(
                             height: 5,
                           ),
-                          NumberPickerWidget()
+                          listElements(dateApp.salgados)
                         ],
                       ),
                       Column(
                         children: [
-                          Text("Doces"),
+                          Text("Doces", style: TextStyle(color: tema.primary)),
                           SizedBox(
                             height: 5,
                           ),
-                          NumberPickerWidget()
+                          listElements(dateApp.doces)
                         ],
                       ),
                     ],
@@ -127,20 +138,20 @@ class NewDateDialog extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Text("Bebidas"),
+                          Text("Bebidas", style: TextStyle(color: tema.primary)),
                           SizedBox(
                             height: 5,
                           ),
-                          NumberPickerWidget()
+                          listElements(dateApp.bebidas)
                         ],
                       ),
                       Column(
                         children: [
-                          Text("Atividades"),
+                          Text("Atividades", style: TextStyle(color: tema.primary)),
                           SizedBox(
                             height: 5,
                           ),
-                          NumberPickerWidget()
+                          listElements(dateApp.atividades)
                         ],
                       )
                     ],
@@ -157,10 +168,22 @@ class NewDateDialog extends StatelessWidget {
                           200, 50
                       )
                   ),
-                  child: Text("Criar",
-                    style: TextStyle(
-                        color: tema.secondary
-                    ),),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Gerar Novamente",
+                        style: TextStyle(
+                            color: tema.secondary
+                        ),),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Icon(
+                        Icons.autorenew,
+                        color: tema.secondary,
+                      ),
+                    ],
+                  ),
                   onPressed: (){}),
             ],
           ),
