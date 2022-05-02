@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trabalho_fibal_mob_2022/view/new_date_dialog.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/date_card.dart';
 import 'package:trabalho_fibal_mob_2022/model/mock/dates_mock.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/date_tile.dart';
@@ -39,6 +40,12 @@ class MainScreen extends StatelessWidget {
           ),
         );
       }
+    }
+
+    newDateDialog(){
+      showDialog(context: context, builder: (BuildContext context) {
+        return NewDateDialog();
+      });
     }
 
     return Scaffold(
@@ -85,7 +92,7 @@ class MainScreen extends StatelessWidget {
                         fontWeight: FontWeight.w700
                     ),),
                   TextButton(
-                    onPressed: (){},
+                    onPressed: () => newDateDialog(),
                     child: Text("Novo Date +",
                         style: TextStyle(color: tema.secondary),),
                     style: TextButton.styleFrom(
