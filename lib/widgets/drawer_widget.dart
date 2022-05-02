@@ -13,19 +13,23 @@ class DrawerWidget extends StatelessWidget {
     var itemsMenu = [
       ListTile(
         title: Text("Editar Preferências", style: TextStyle(color: tema.primary, fontSize: 20),),
-        trailing: Icon(
-          Icons.toggle_on,
+        leading: Icon(
+          Icons.favorite,
           color: Colors.deepPurple,
         ),
 
       ),
       ListTile(
           title: Text("Editar Perfil", style: TextStyle(color: tema.primary, fontSize: 20)),
-          trailing: Icon(Icons.account_circle_outlined, color: Colors.deepPurple,)
+          leading: Icon(Icons.person, color: Colors.deepPurple,)
 
       ),
       ListTile(
         title: Text("Modo Escuro", style: TextStyle(color: tema.primary, fontSize: 20)),
+        leading: Icon(
+          Icons.dark_mode,
+          color: Colors.deepPurple,
+        ),
         trailing: Switch(
           value: false,
           onChanged: (value){},
