@@ -15,54 +15,53 @@ class CadastroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return Scaffold(
       body: Container(
           padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
           child: ListView(
             children: [
               Container(
-                  child: const Text(
+                  child: Text(
                 "Bora para um",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
-                    color: Colors.deepPurpleAccent),
+                    color: tema.primary),
               )),
               Container(
-                  child: const Text(
+                  child: Text(
                 "DATE?",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
-                    color: Colors.deepPurpleAccent),
+                    color: tema.primary),
               )),
               Container(
-                padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
                 child: Form(
                   key: formKey,
                   child: Column(
                     children: [
-                      const Align(
+                      Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           "Nome",
-                          style: TextStyle(
-                              fontSize: 20, color: Colors.deepPurpleAccent),
+                          style: TextStyle(fontSize: 20, color: tema.primary),
                         ),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      nameFormField(),
+                      nameFormField(context),
                       const SizedBox(
                         height: 20,
                       ),
-                      const Align(
+                      Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           "Idade",
-                          style: TextStyle(
-                              fontSize: 20, color: Colors.deepPurpleAccent),
+                          style: TextStyle(fontSize: 20, color: tema.primary),
                         ),
                       ),
                       //slider
@@ -70,31 +69,29 @@ class CadastroScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Align(
+                      Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             "Username",
-                            style: TextStyle(
-                                fontSize: 20, color: Colors.deepPurpleAccent),
+                            style: TextStyle(fontSize: 20, color: tema.primary),
                           )),
                       const SizedBox(
                         height: 10,
                       ),
-                      usernameFormField(),
+                      usernameFormField(context),
                       const SizedBox(
                         height: 20,
                       ),
-                      const Align(
+                      Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             "Senha",
-                            style: TextStyle(
-                                fontSize: 20, color: Colors.deepPurpleAccent),
+                            style: TextStyle(fontSize: 20, color: tema.primary),
                           )),
                       const SizedBox(
                         height: 20,
                       ),
-                      passwordFormField(),
+                      passwordFormField(context),
                       const SizedBox(
                         height: 30,
                       ),
@@ -108,23 +105,26 @@ class CadastroScreen extends StatelessWidget {
     );
   }
 
-  Widget nameFormField() {
+  Widget nameFormField(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return TextFormField(
       keyboardType: TextInputType.name,
       onSaved: (String? inValue) {
         loginData.name = inValue ?? "";
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-          color: Colors.deepPurpleAccent,
+          color: tema.primary,
         )),
         hintText: "Example Name",
       ),
     );
   }
 
-  Widget usernameFormField() {
+  Widget usernameFormField(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
+
     return TextFormField(
       keyboardType: TextInputType.name,
       validator: (String? inValue) {
@@ -138,17 +138,19 @@ class CadastroScreen extends StatelessWidget {
       onSaved: (String? inValue) {
         loginData.username = inValue ?? "";
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-          color: Colors.deepPurpleAccent,
+          color: tema.primary,
         )),
         hintText: "Username",
       ),
     );
   }
 
-  Widget passwordFormField() {
+  Widget passwordFormField(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
+
     return TextFormField(
       obscureText: true,
       validator: (String? inValue) {
@@ -162,10 +164,10 @@ class CadastroScreen extends StatelessWidget {
       onSaved: (String? inValue) {
         loginData.password = inValue ?? "";
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-          color: Colors.deepPurpleAccent,
+          color: tema.primary,
         )),
         hintText: "******",
       ),

@@ -15,6 +15,7 @@ class EditarPerfilScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return Scaffold(
       body: Container(
           padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
@@ -23,21 +24,21 @@ class EditarPerfilScreen extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                      child: const Icon(
+                      child: Icon(
                     Icons.edit,
-                    color: Colors.deepPurpleAccent,
+                    color: tema.primary,
                     size: 40,
                   )),
                   const SizedBox(
                     width: 10,
                   ),
                   Container(
-                      child: const Text(
+                      child: Text(
                     "Editar Perfil",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 40,
-                        color: Colors.deepPurpleAccent),
+                        color: tema.primary),
                   )),
                 ],
               ),
@@ -47,41 +48,38 @@ class EditarPerfilScreen extends StatelessWidget {
                   key: formKey,
                   child: Column(
                     children: [
-                      const Align(
+                      Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           "Nome",
-                          style: TextStyle(
-                              fontSize: 20, color: Colors.deepPurpleAccent),
+                          style: TextStyle(fontSize: 20, color: tema.primary),
                         ),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      nameFormField(),
+                      nameFormField(context),
                       const SizedBox(
                         height: 20,
                       ),
-                      const Align(
+                      Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             "Senha",
-                            style: TextStyle(
-                                fontSize: 20, color: Colors.deepPurpleAccent),
+                            style: TextStyle(fontSize: 20, color: tema.primary),
                           )),
                       const SizedBox(
                         height: 20,
                       ),
-                      passwordFormField(),
+                      passwordFormField(context),
                       const SizedBox(
                         height: 20,
                       ),
-                      const Align(
+                      Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           "Idade",
-                          style: TextStyle(
-                              fontSize: 20, color: Colors.deepPurpleAccent),
+                          style: TextStyle(fontSize: 20, color: tema.primary),
                         ),
                       ),
                       //slider
@@ -89,7 +87,7 @@ class EditarPerfilScreen extends StatelessWidget {
                       const SizedBox(
                         height: 30,
                       ),
-                      submitButton(),
+                      submitButton(context),
                     ],
                   ),
                 ),
@@ -99,23 +97,25 @@ class EditarPerfilScreen extends StatelessWidget {
     );
   }
 
-  Widget nameFormField() {
+  Widget nameFormField(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return TextFormField(
       keyboardType: TextInputType.name,
       onSaved: (String? inValue) {
         loginData.name = inValue ?? "";
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-          color: Colors.deepPurpleAccent,
+          color: tema.primary,
         )),
         hintText: "Example Name",
       ),
     );
   }
 
-  Widget usernameFormField() {
+  Widget usernameFormField(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return TextFormField(
       keyboardType: TextInputType.name,
       validator: (String? inValue) {
@@ -129,17 +129,18 @@ class EditarPerfilScreen extends StatelessWidget {
       onSaved: (String? inValue) {
         loginData.username = inValue ?? "";
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-          color: Colors.deepPurpleAccent,
+          color: tema.primary,
         )),
         hintText: "Username",
       ),
     );
   }
 
-  Widget passwordFormField() {
+  Widget passwordFormField(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return TextFormField(
       obscureText: true,
       validator: (String? inValue) {
@@ -153,17 +154,18 @@ class EditarPerfilScreen extends StatelessWidget {
       onSaved: (String? inValue) {
         loginData.password = inValue ?? "";
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-          color: Colors.deepPurpleAccent,
+          color: tema.primary,
         )),
         hintText: "******",
       ),
     );
   }
 
-  Widget submitButton() {
+  Widget submitButton(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return ElevatedButton(
       child: Container(
         width: 100,

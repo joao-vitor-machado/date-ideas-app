@@ -14,6 +14,8 @@ class CheckBoxState extends State<CheckBox> {
 
   @override
   Widget build(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
+
     Color getColor(Set<MaterialState> states) {
       const Set<MaterialState> interactiveStates = <MaterialState>{
         MaterialState.pressed,
@@ -23,7 +25,7 @@ class CheckBoxState extends State<CheckBox> {
       if (states.any(interactiveStates.contains)) {
         return Colors.grey;
       }
-      return Colors.deepPurpleAccent;
+      return tema.primary;
     }
 
     return Checkbox(

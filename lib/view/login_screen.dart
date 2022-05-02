@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trabalho_fibal_mob_2022/view/cadastro_screen.dart';
+import 'package:trabalho_fibal_mob_2022/view/main_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   static const route = "/";
@@ -68,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: GestureDetector(
-                        onTap: (){},
+                        onTap: () => Navigator.pushNamed(context, CadastroScreen.route),
                         child: Container(
                           alignment: Alignment.centerLeft,
                           child: const Text("Não possui cadastro ainda?",
@@ -99,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                   style: TextStyle(
                       color: tema.secondary
                   ),),
-                onPressed: (){}),
+                onPressed: () => Navigator.pushNamed(context, MainScreen.route)),
           ],
         ),
       ),

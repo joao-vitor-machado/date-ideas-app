@@ -19,13 +19,14 @@ class RadioButtonState extends State<RadioButton> {
 
   @override
   Widget build(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return Column(
       children: <Widget>[
         ListTile(
           title: const Text('Sim',
               style: TextStyle(fontSize: 16, color: Colors.grey)),
           leading: Radio<Alcohol>(
-            activeColor: Colors.deepPurpleAccent,
+            activeColor: tema.primary,
             value: Alcohol.sim,
             groupValue: widget.alcohol,
             onChanged: (Alcohol? value) {
@@ -39,7 +40,7 @@ class RadioButtonState extends State<RadioButton> {
           title: const Text('Não',
               style: TextStyle(fontSize: 16, color: Colors.grey)),
           leading: Radio<Alcohol>(
-            activeColor: Colors.deepPurpleAccent,
+            activeColor: tema.primary,
             value: Alcohol.nao,
             groupValue: widget.alcohol,
             onChanged: (Alcohol? value) {

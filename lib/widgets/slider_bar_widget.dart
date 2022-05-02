@@ -16,8 +16,9 @@ class SliderBarState extends State<SliderBar> {
 
   @override
   Widget build(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return Slider(
-      activeColor: Colors.deepPurpleAccent,
+      activeColor: tema.primary,
       min: 10,
       max: 80,
       value: _sliderValue,

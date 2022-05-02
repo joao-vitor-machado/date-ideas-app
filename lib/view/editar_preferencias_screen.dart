@@ -17,6 +17,7 @@ class EditarPreferenciasScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return Scaffold(
       body: Container(
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
@@ -26,31 +27,31 @@ class EditarPreferenciasScreen extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                        child: const Icon(
+                        child: Icon(
                       Icons.edit,
-                      color: Colors.deepPurpleAccent,
+                      color: tema.primary,
                       size: 40,
                     )),
                     const SizedBox(
                       width: 10,
                     ),
                     Container(
-                        child: const Text(
+                        child: Text(
                       "Editar",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 40,
-                          color: Colors.deepPurpleAccent),
+                          color: tema.primary),
                     )),
                   ],
                 ),
                 Container(
-                    child: const Text(
+                    child: Text(
                   "Preferências",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 40,
-                      color: Colors.deepPurpleAccent),
+                      color: tema.primary),
                 )),
               ],
             ),
@@ -58,11 +59,11 @@ class EditarPreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Salgados",
+                child: Text("Salgados",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -125,11 +126,11 @@ class EditarPreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-              child: const Text("Bebidas Alcoolicas?",
+              child: Text("Bebidas Alcoolicas?",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      color: Colors.deepPurpleAccent)),
+                      color: tema.primary)),
             ),
             const SizedBox(
               height: 10,
@@ -141,11 +142,11 @@ class EditarPreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Bebidas",
+                child: Text("Bebidas",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -181,11 +182,11 @@ class EditarPreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Doces",
+                child: Text("Doces",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -241,11 +242,11 @@ class EditarPreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Atividades",
+                child: Text("Atividades",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -301,11 +302,11 @@ class EditarPreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Escolher Gênero?",
+                child: Text("Escolher Gênero?",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -316,11 +317,11 @@ class EditarPreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Gêneros Favoritos",
+                child: Text("Gêneros Favoritos",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),

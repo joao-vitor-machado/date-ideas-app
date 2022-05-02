@@ -21,28 +21,36 @@ class PreferenciasScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //RadioButtonBloc bloc = BlocProvider.of<RadioButtonBloc>(context);
-
+    final tema = Theme.of(context).colorScheme;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        actions: [
+          GestureDetector(
+          onTap: () => Navigator.pop(context),
+          child: Icon(Icons.arrow_back, color: tema.primary,))
+        ],
+      ),
       body: Container(
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
           child: ListView(children: [
             Container(
-                child: const Text(
+                child: Text(
               "Suas Preferências",
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
-                  color: Colors.deepPurpleAccent),
+                  color: tema.primary),
             )),
             const SizedBox(
               height: 20,
             ),
             Container(
-                child: const Text("Salgados",
+                child: Text("Salgados",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -105,11 +113,11 @@ class PreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-              child: const Text("Bebidas Alcoolicas?",
+              child: Text("Bebidas Alcoolicas?",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      color: Colors.deepPurpleAccent)),
+                      color: tema.primary)),
             ),
             const SizedBox(
               height: 10,
@@ -132,11 +140,11 @@ class PreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Bebidas",
+                child: Text("Bebidas",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -193,11 +201,11 @@ class PreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Doces",
+                child: Text("Doces",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -253,11 +261,11 @@ class PreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Atividades",
+                child: Text("Atividades",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -313,11 +321,11 @@ class PreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Escolher Gênero?",
+                child: Text("Escolher Gênero?",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -328,11 +336,11 @@ class PreferenciasScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-                child: const Text("Gêneros Favoritos",
+                child: Text("Gêneros Favoritos",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent))),
+                        color: tema.primary))),
             const SizedBox(
               height: 10,
             ),
@@ -397,7 +405,8 @@ class PreferenciasScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: Icon(
                 Icons.arrow_forward,
-                color: Colors.white,
+                color: Colors.blue,
+                size: 10,
               ),
             ),
           ],

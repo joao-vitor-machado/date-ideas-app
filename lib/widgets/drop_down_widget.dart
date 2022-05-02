@@ -16,6 +16,7 @@ class DropDownState extends State<DropDown> {
 
   @override
   Widget build(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
     return Container(
       child: Row(
         children: [
@@ -24,9 +25,7 @@ class DropDownState extends State<DropDown> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(
-                  color: Colors.deepPurpleAccent,
-                  style: BorderStyle.solid,
-                  width: 0.50),
+                  color: tema.primary, style: BorderStyle.solid, width: 0.50),
             ),
             child: DropdownButton<String>(
               value: dropDownValue1,
@@ -55,9 +54,7 @@ class DropDownState extends State<DropDown> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(
-                  color: Colors.deepPurpleAccent,
-                  style: BorderStyle.solid,
-                  width: 0.50),
+                  color: tema.primary, style: BorderStyle.solid, width: 0.50),
             ),
             child: DropdownButton<String>(
               value: dropDownValue2,
@@ -86,9 +83,7 @@ class DropDownState extends State<DropDown> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(
-                  color: Colors.deepPurpleAccent,
-                  style: BorderStyle.solid,
-                  width: 0.50),
+                  color: tema.primary, style: BorderStyle.solid, width: 0.50),
             ),
             child: DropdownButton<String>(
               value: dropDownValue3,

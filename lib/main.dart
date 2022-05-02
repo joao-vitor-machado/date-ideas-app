@@ -19,10 +19,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: MainScreen.route,
+      initialRoute: EditarPreferenciasScreen.route,
       routes: {
         LoginScreen.route : (context) => const LoginScreen(),
         MainScreen.route  : (context) => const MainScreen(),
+        CadastroScreen.route: (context) => CadastroScreen(),
+        PreferenciasScreen.route: (context) => PreferenciasScreen(),
+        EditarPerfilScreen.route: (context) => EditarPerfilScreen(),
+        EditarPreferenciasScreen.route: (context) => EditarPreferenciasScreen(),
       },
       title: 'Flutter Demo',
       theme: tema.copyWith(
