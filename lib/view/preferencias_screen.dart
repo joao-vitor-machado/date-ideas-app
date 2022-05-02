@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trabalho_fibal_mob_2022/view/main_screen.dart';
 //import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/checkbox_widget.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/radio_button_widget.dart';
@@ -24,12 +25,14 @@ class PreferenciasScreen extends StatelessWidget {
     final tema = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
-        actions: [
-          GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: Icon(Icons.arrow_back, color: tema.primary,))
-        ],
+        backgroundColor: Colors.transparent,
+        foregroundColor: tema.primary,
+        elevation: 0,
+        // actions: [
+        //   GestureDetector(
+        //   onTap: () => Navigator.pop(context),
+        //   child: Icon(Icons.arrow_back, color: tema.primary,))
+        // ],
       ),
       body: Container(
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
@@ -350,7 +353,7 @@ class PreferenciasScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            submitButton(),
+            submitButton(context),
             const SizedBox(
               height: 20,
             ),
@@ -389,11 +392,13 @@ class PreferenciasScreen extends StatelessWidget {
     );
   }
 
-  Widget submitButton() {
+  Widget submitButton(BuildContext context) {
+    final tema = Theme.of(context).colorScheme;
+
     return ElevatedButton(
       child: Container(
         child: Row(
-          children: const [
+          children: [
             Text(
               "Cadastrar",
               textAlign: TextAlign.center,
@@ -405,17 +410,19 @@ class PreferenciasScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: Icon(
                 Icons.arrow_forward,
-                color: Colors.blue,
-                size: 10,
+                color: tema.secondary,
+                size: 20,
               ),
             ),
           ],
         ),
       ),
       onPressed: () {
-        if (formKey.currentState!.validate()) {
-          formKey.currentState!.save();
-        }
+        // print("object");
+        Navigator.pushNamed(context, MainScreen.route);
+        // if (formKey.currentState!.validate()) {
+        //   formKey.currentState!.save();
+        // }
       },
     );
   }
