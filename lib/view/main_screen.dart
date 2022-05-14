@@ -16,7 +16,6 @@ class MainScreen extends StatelessWidget {
     final tema = Theme.of(context).colorScheme;
     final screen = MediaQuery.of(context).size;
 
-
     Widget renderDateCards(){
       List<int> indexes = [];
       for(int i=0; i<DateMock.dates.length; i++){

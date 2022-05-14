@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_fibal_mob_2022/view/login_screen.dart';
+import 'view/cadastro_screen.dart';
+import 'view/preferencias_screen.dart';
+import 'view/editar_perfil_screen.dart';
+import 'view/editar_preferencias_screen.dart';
 import 'package:trabalho_fibal_mob_2022/view/main_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -9,17 +14,19 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static final tema = ThemeData(
-    brightness: Brightness.light
-  );
+  static final tema = ThemeData(brightness: Brightness.light);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: MainScreen.route,
+      initialRoute: EditarPreferenciasScreen.route,
       routes: {
         LoginScreen.route : (context) => const LoginScreen(),
         MainScreen.route  : (context) => const MainScreen(),
+        CadastroScreen.route: (context) => CadastroScreen(),
+        PreferenciasScreen.route: (context) => PreferenciasScreen(),
+        EditarPerfilScreen.route: (context) => EditarPerfilScreen(),
+        EditarPreferenciasScreen.route: (context) => EditarPreferenciasScreen(),
       },
       title: 'Flutter Demo',
       theme: tema.copyWith(
@@ -32,5 +39,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
