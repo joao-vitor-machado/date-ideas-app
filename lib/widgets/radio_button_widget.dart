@@ -24,7 +24,7 @@ class RadioButtonState extends State<RadioButton> {
       children: <Widget>[
         ListTile(
           title: const Text('Sim',
-              style: TextStyle(fontSize: 16, color: Colors.grey)),
+              style: TextStyle(fontSize: 18, color: Colors.grey)),
           leading: Radio<Alcohol>(
             activeColor: tema.primary,
             value: Alcohol.sim,
@@ -38,7 +38,7 @@ class RadioButtonState extends State<RadioButton> {
         ),
         ListTile(
           title: const Text('Não',
-              style: TextStyle(fontSize: 16, color: Colors.grey)),
+              style: TextStyle(fontSize: 18, color: Colors.grey)),
           leading: Radio<Alcohol>(
             activeColor: tema.primary,
             value: Alcohol.nao,

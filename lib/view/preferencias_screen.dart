@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_fibal_mob_2022/view/main_screen.dart';
-//import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/checkbox_widget.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/radio_button_widget.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/drop_down_widget.dart';
-//import 'package:trabalho_fibal_mob_2022/bloc/radio_button_bloc.dart';
+import '../model/preferencias.dart';
 
 class PreferenciasScreen extends StatelessWidget {
   static const route = "/preferencias";
@@ -17,22 +16,47 @@ class PreferenciasScreen extends StatelessWidget {
   final RadioButton radioButton1 = RadioButton();
   final RadioButton radioButton2 = RadioButton();
   final DropDown dropDown = const DropDown();
-  //final RadioButtonBloc radioButtonBloc = RadioButtonBloc(RadioButtonState());
+
+  List<String> salgados = [
+    "Salgadinhos",
+    "Comida Congelada",
+    "Fast Food",
+    "Comida Árabe",
+    "Comida Japonesa",
+    "Comida Italiana",
+    "Pizza"
+  ];
+
+  List<String> bebidasNaoAlc = ["Água", "Suco", "Refrigerante"];
+
+  List<String> bebidasAlc = ["Cerveja", "Vinho", "Destilados"];
+
+  List<String> doces = [
+    "Chocolate",
+    "Sorvete",
+    "Brownie",
+    "Cookie",
+    "Açaí",
+    "Bolo"
+  ];
+
+  List<String> atividades = [
+    "Ver Filmes",
+    "Ver Séries",
+    "Ver Animes",
+    "Passear no Parque",
+    "Fazer Compras",
+    "Ir ao Cinema"
+  ];
 
   @override
   Widget build(BuildContext context) {
-    //RadioButtonBloc bloc = BlocProvider.of<RadioButtonBloc>(context);
     final tema = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         foregroundColor: tema.primary,
         elevation: 0,
-        // actions: [
-        //   GestureDetector(
-        //   onTap: () => Navigator.pop(context),
-        //   child: Icon(Icons.arrow_back, color: tema.primary,))
-        // ],
       ),
       body: Container(
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
@@ -48,305 +72,29 @@ class PreferenciasScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
-                child: Text("Salgados",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: tema.primary))),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Salgadinhos",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Comida Congelada",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Fast Food",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Comida Árabe",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Comida Japonesa",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Comida Italiana",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Pizza",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              child: Text("Bebidas Alcoolicas?",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: tema.primary)),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
+            titulo(context, "Salgados"),
+            mapList(context, "salgado", salgados),
+            titulo(context, "Bebidas Alcoolicas?"),
             Container(
               child: radioButton1,
             ),
-            /*Radio(
-              value: true,
-              groupValue: radioButton.alcohol,
-              onChanged: (value) {
-                if (value == true) {
-                  bloc.add(Enabled());
-                } else {
-                  bloc.add(Disabled());
-                }
-              },
-            ),*/
             const SizedBox(
               height: 20,
             ),
-            Container(
-                child: Text("Bebidas",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: tema.primary))),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Água",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Suco",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Refrigerante",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  //bebidas alcoolicas aqui
-                  /*BlocBuilder<RadioButtonBloc, RadioButtonState>(
-                      builder: (context, state) {
-                    RadioButtonBloc bloc =
-                        BlocProvider.of<RadioButtonBloc>(context);
-                    return radioButton.alcohol == Alcohol.sim
-                        ? enableCheckBox()
-                        : const SizedBox(
-                            height: 20,
-                          );
-                    /*Radio(
-                      value: true,
-                      groupValue: radioButton.alcohol,
-                      onChanged: (value) {
-                        if (value == true) {
-                          bloc.add(Enabled());
-                        } else {
-                          bloc.add(Disabled());
-                        }
-                      },
-                    );*/
-                  }),*/
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-                child: Text("Doces",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: tema.primary))),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Chocolate",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Sorvete",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Brownie",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Cookie",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Açaí",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Bolo",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-                child: Text("Atividades",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: tema.primary))),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Ver Filmes",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Ver Séries",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Ver Animes",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Passear no Parque",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Fazer Compras",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Transform.scale(scale: 0.8, child: checkBox),
-                      const Text("Ir ao Cinema",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-                child: Text("Escolher Gênero?",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: tema.primary))),
-            const SizedBox(
-              height: 10,
-            ),
+            titulo(context, "Bebidas"),
+            mapList(context, "bebidaNaoAlc", bebidasNaoAlc),
+            titulo(context, "Doces"),
+            mapList(context, "doce", doces),
+            titulo(context, "Atividades"),
+            mapList(context, "atividade", atividades),
+            titulo(context, "Escolher Gênero?"),
             Container(
               child: radioButton2,
             ),
             const SizedBox(
               height: 20,
             ),
-            Container(
-                child: Text("Gêneros Favoritos",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: tema.primary))),
-            const SizedBox(
-              height: 10,
-            ),
+            titulo(context, "Gêneros Favoritos"),
             Container(
               child: dropDown,
             ),
@@ -363,32 +111,16 @@ class PreferenciasScreen extends StatelessWidget {
 
   Widget enableCheckBox() {
     return Column(
-      children: [
-        Row(
+      children: salgados.map((salgado) {
+        Preferencias preferencias = Preferencias(name: salgado);
+        return Row(
           children: [
-            Transform.scale(scale: 0.8, child: checkBox),
-            const Text("Cerveja",
-                style: TextStyle(fontSize: 16, color: Colors.grey)),
+            const CheckBox(),
+            Text(preferencias.name,
+                style: TextStyle(fontSize: 18, color: Colors.grey)),
           ],
-        ),
-        Row(
-          children: [
-            Transform.scale(scale: 0.8, child: checkBox),
-            const Text("Whisky",
-                style: TextStyle(fontSize: 16, color: Colors.grey)),
-          ],
-        ),
-        Row(
-          children: [
-            Transform.scale(scale: 0.8, child: checkBox),
-            const Text("Vinho",
-                style: TextStyle(fontSize: 16, color: Colors.grey)),
-          ],
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-      ],
+        );
+      }).toList(),
     );
   }
 
@@ -418,12 +150,51 @@ class PreferenciasScreen extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        // print("object");
         Navigator.pushNamed(context, MainScreen.route);
-        // if (formKey.currentState!.validate()) {
-        //   formKey.currentState!.save();
-        // }
       },
     );
+  }
+
+  Widget titulo(BuildContext context, String titulo) {
+    final tema = Theme.of(context).colorScheme;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+            child: Text(titulo,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: tema.primary))),
+        const SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
+
+  Widget mapList(BuildContext context, String nome, List<String> lista) {
+    final tema = Theme.of(context).colorScheme;
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Container(
+        child: Column(
+          children: lista.map((nome) {
+            Preferencias preferencias = Preferencias(name: nome);
+            return Row(
+              children: [
+                const CheckBox(),
+                Text(preferencias.name,
+                    style: TextStyle(fontSize: 18, color: Colors.grey)),
+              ],
+            );
+          }).toList(),
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+    ]);
   }
 }
