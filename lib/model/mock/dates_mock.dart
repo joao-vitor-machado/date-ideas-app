@@ -25,7 +25,8 @@ class DateMock {
       doces: ["chocolate milka"],
       bebidas: ["Refrigerante"],
       atividades: ["Triplo mortal carpado"],
-    ),DateApp(
+    ),
+    DateApp(
       nome: "Date Bauds",
       data: DateTime.now(),
       salgados: ["Coxinha", "Pão de queijo"],
@@ -48,7 +49,8 @@ class DateMock {
       doces: ["chocolate milka"],
       bebidas: ["Refrigerante"],
       atividades: ["Triplo mortal carpado"],
-    ),DateApp(
+    ),
+    DateApp(
       nome: "Date Bauds",
       data: DateTime.now(),
       salgados: ["Coxinha", "Pão de queijo"],

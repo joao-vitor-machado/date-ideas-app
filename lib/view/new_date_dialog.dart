@@ -5,8 +5,6 @@ import 'package:trabalho_fibal_mob_2022/widgets/number_picker_widget.dart';
 class NewDateDialog extends StatelessWidget {
   const NewDateDialog({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context).colorScheme;
@@ -26,39 +24,35 @@ class NewDateDialog extends StatelessWidget {
                 alignment: Alignment.topRight,
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: GestureDetector(child: Icon(Icons.close,),
-                    onTap: () => Navigator.pop(context),) ,
+                  child: GestureDetector(
+                    child: Icon(
+                      Icons.close,
+                    ),
+                    onTap: () => Navigator.pop(context),
+                  ),
                 ),
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("Crie seu Date",
+                child: Text(
+                  "Crie seu Date",
                   style: TextStyle(
                     color: tema.primary,
                     fontWeight: FontWeight.bold,
                     fontFamily: "Roboto",
                     fontSize: 24,
-                  ),),
+                  ),
+                ),
               ),
               SizedBox(
                 height: 20,
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Nome",
-                  style: TextStyle(
-                      fontSize: 12, color: tema.primary),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
+              titulo(context, "Nome"),
               TextFormField(
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5),
-                    borderSide:  BorderSide(color: tema.primary, width: 0.0),
+                    borderSide: BorderSide(color: tema.primary, width: 0.0),
                   ),
                   labelText: "Nome",
                   // border: OutlineInputBorder()
@@ -67,56 +61,20 @@ class NewDateDialog extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Data",
-                  style: TextStyle(
-                      fontSize: 12, color: tema.primary),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
+              titulo(context, "Data"),
               DatePickerWidget(),
               const SizedBox(
                 height: 20,
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Opções",
-                  style: TextStyle(
-                      fontSize: 15, color: tema.primary),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
+              titulo(context, "Opções"),
               Column(
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Column(
-                        children: [
-                          Text("Salagado"),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          NumberPickerWidget()
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text("Doces"),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          NumberPickerWidget()
-                        ],
-                      ),
+                      numberPickerComTitle("Salgado"),
+                      numberPickerComTitle("Doces"),
                     ],
                   ),
                   SizedBox(
@@ -125,24 +83,8 @@ class NewDateDialog extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Column(
-                        children: [
-                          Text("Bebidas"),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          NumberPickerWidget()
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text("Atividades"),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          NumberPickerWidget()
-                        ],
-                      )
+                      numberPickerComTitle("Bebidas"),
+                      numberPickerComTitle("Atividades"),
                     ],
                   )
                 ],
@@ -153,19 +95,46 @@ class NewDateDialog extends StatelessWidget {
               TextButton(
                   style: TextButton.styleFrom(
                       backgroundColor: tema.primary,
-                      minimumSize: const Size(
-                          200, 50
-                      )
+                      minimumSize: const Size(200, 50)),
+                  child: Text(
+                    "Criar",
+                    style: TextStyle(color: tema.secondary),
                   ),
-                  child: Text("Criar",
-                    style: TextStyle(
-                        color: tema.secondary
-                    ),),
-                  onPressed: (){}),
+                  onPressed: () {}),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget titulo(BuildContext context, String titulo) {
+    final tema = Theme.of(context).colorScheme;
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            titulo,
+            style: TextStyle(fontSize: 12, color: tema.primary),
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+      ],
+    );
+  }
+
+  Widget numberPickerComTitle(String title) {
+    return Column(
+      children: [
+        Text(title),
+        const SizedBox(
+          height: 5,
+        ),
+        const NumberPickerWidget()
+      ],
     );
   }
 }

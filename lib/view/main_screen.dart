@@ -16,35 +16,36 @@ class MainScreen extends StatelessWidget {
     final tema = Theme.of(context).colorScheme;
     final screen = MediaQuery.of(context).size;
 
-    Widget renderDateCards(){
+    Widget renderDateCards() {
       List<int> indexes = [];
-      for(int i=0; i<DateMock.dates.length; i++){
-        if(DateMock.dates[i].data.month == DateTime.now().month && DateMock.dates[i].data.day == DateTime.now().day){
+      for (int i = 0; i < DateMock.dates.length; i++) {
+        if (DateMock.dates[i].data.month == DateTime.now().month &&
+            DateMock.dates[i].data.day == DateTime.now().day) {
           indexes.add(i);
         }
       }
-      if(indexes.length > 0){
+      if (indexes.length > 0) {
         return CarouselSlider(
-            options: CarouselOptions(
-                autoPlay: false
-            ),
-            items: indexes.map((index) => DateCard(dateApp: DateMock.dates[index])).toList()
-        );
-
-      }else{
+            options: CarouselOptions(autoPlay: false),
+            items: indexes
+                .map((index) => DateCard(dateApp: DateMock.dates[index]))
+                .toList());
+      } else {
         return Container(
-          height: screen.height * 0.3,
-          child: Center(
+          // height: screen.height * 0.3,
+          child: const Center(
             child: Text("Nenhum date hoje ;-;"),
           ),
         );
       }
     }
 
-    newDateDialog(){
-      showDialog(context: context, builder: (BuildContext context) {
-        return NewDateDialog();
-      });
+    newDateDialog() {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return NewDateDialog();
+          });
     }
 
     return Scaffold(
@@ -60,45 +61,48 @@ class MainScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 20.0),
-              child: Text("Olá, Fulano!",
-              style: TextStyle(
-                color: tema.primary,
-                fontFamily: "Roboto",
-                fontSize: 40,
-                fontWeight: FontWeight.bold
-              ),),
+              child: Text(
+                "Olá, Fulano!",
+                style: TextStyle(
+                    color: tema.primary,
+                    fontFamily: "Roboto",
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20.0),
-              child: Text("Dates de hoje:",
-              style: TextStyle(
-                color: tema.primary,
-                fontSize: 24,
-                fontWeight: FontWeight.w700
-              ),),
+              child: Text(
+                "Dates de hoje:",
+                style: TextStyle(
+                    color: tema.primary,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700),
+              ),
             ),
-            renderDateCards(),
+            SizedBox(height: screen.height * 0.35, child: renderDateCards()),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20 ,bottom: 8),
+              padding: const EdgeInsets.only(left: 20.0, right: 20, bottom: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Próximos Dates:",
+                  Text(
+                    "Próximos Dates:",
                     style: TextStyle(
                         color: tema.primary,
                         fontSize: 24,
-                        fontWeight: FontWeight.w700
-                    ),),
+                        fontWeight: FontWeight.w700),
+                  ),
                   TextButton(
                     onPressed: () => newDateDialog(),
-                    child: Text("Novo Date +",
-                        style: TextStyle(color: tema.secondary),),
-                    style: TextButton.styleFrom(
-                      backgroundColor: tema.primary,
-                      minimumSize: Size(60, 40)
+                    child: Text(
+                      "Novo Date +",
+                      style: TextStyle(color: tema.secondary),
                     ),
-
+                    style: TextButton.styleFrom(
+                        backgroundColor: tema.primary,
+                        minimumSize: Size(60, 40)),
                   )
                 ],
               ),
@@ -108,7 +112,9 @@ class MainScreen extends StatelessWidget {
                 width: screen.width * 0.9,
                 height: screen.height * 0.35,
                 child: ListView(
-                  children: DateMock.dates.map((element) => DateTile(dataApp: element)).toList(),
+                  children: DateMock.dates
+                      .map((element) => DateTile(dataApp: element))
+                      .toList(),
                 ),
               ),
             )
@@ -117,5 +123,4 @@ class MainScreen extends StatelessWidget {
       ),
     );
   }
-
 }
