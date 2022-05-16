@@ -35,32 +35,43 @@ class CadastroScreen extends StatelessWidget {
               children: [
                 cabecalho(context, "Bora para um"),
                 cabecalho(context, "DATE?"),
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
-                  child: Form(
-                    key: formKey,
-                    child: Column(
-                      children: [
-                        titulo(context, "Nome"),
-                        nameFormField(context),
-                        titulo(context, "Idade"),
-                        sliderBar,
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        titulo(context, "Username"),
-                        usernameFormField(context),
-                        titulo(context, "Senha"),
-                        passwordFormField(context),
-                        submitButton(context),
-                      ],
-                    ),
-                  ),
-                )
+                loginForm(context),
               ],
             )),
       ),
     );
+  }
+
+  Widget loginForm(BuildContext context) {
+    return BlocListener<LoginBloc, LoginState>(
+        listener: (context, state) {
+          final formStatus = state.formStatus;
+          if (formStatus is SubmissionFailed) {
+            _showSnackBar(context, formStatus.exception.toString());
+          }
+        },
+        child: Container(
+          padding: EdgeInsets.fromLTRB(0, 25, 0, 25),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                titulo(context, "Nome"),
+                nameFormField(context),
+                titulo(context, "Idade"),
+                sliderBar,
+                const SizedBox(
+                  height: 20,
+                ),
+                titulo(context, "Username"),
+                usernameFormField(context),
+                titulo(context, "Senha"),
+                passwordFormField(context),
+                submitButton(context),
+              ],
+            ),
+          ),
+        ));
   }
 
   Widget nameFormField(BuildContext context) {
@@ -224,5 +235,10 @@ class CadastroScreen extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _showSnackBar(BuildContext context, String message) {
+    final snackBar = SnackBar(content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

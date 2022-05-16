@@ -1,29 +1,39 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
-import 'package:flutter/gestures.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/manage_event.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/manage_state.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/manage_submission.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginState()) {}
+  LoginBloc() : super(LoginState()) {
+    on<LoginEvent>(_onEvent);
+  }
 
   @override
-  Stream<LoginState> mapEventToState(LoginEvent event) async* {
+  Future<void> _onEvent(LoginEvent event, Emitter<LoginState> emit) async {
     //name updated
     if (event is LoginNameChanged) {
-      yield state.copyWith(name: event.name);
+      emit(state.copyWith(name: event.name));
 
       //username updated
     } else if (event is LoginUsernameChanged) {
-      yield state.copyWith(username: event.username);
+      emit(state.copyWith(username: event.username));
 
       //password updated
     } else if (event is LoginPasswordChanged) {
-      yield state.copyWith(password: event.password);
+      emit(state.copyWith(password: event.password));
 
       //form submitted
     } else if (event is LoginSubmitted) {
-      yield state.copyWith(formStatus: FormSubmitting());
+      emit(state.copyWith(formStatus: FormSubmitting()));
+    }
+
+    try {
+      emit(state.copyWith(formStatus: SubmissionSuccess()));
+    } catch (e) {
+      //emit(state.copyWith(formStatus: SubmissionFailed(e)));
+      print(e);
     }
   }
 }
