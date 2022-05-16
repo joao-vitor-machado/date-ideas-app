@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_fibal_mob_2022/model/login.dart';
+import 'package:trabalho_fibal_mob_2022/view/preferencias_screen.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/slider_bar_widget.dart';
 
 class CadastroScreen extends StatelessWidget {
@@ -17,6 +18,11 @@ class CadastroScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final tema = Theme.of(context).colorScheme;
     return Scaffold(
+      backgroundColor: tema.background,
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          foregroundColor: tema.primary),
       body: Container(
           padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
           child: ListView(
@@ -95,7 +101,7 @@ class CadastroScreen extends StatelessWidget {
                       const SizedBox(
                         height: 30,
                       ),
-                      submitButton(),
+                      submitButton(context),
                     ],
                   ),
                 ),
@@ -174,7 +180,7 @@ class CadastroScreen extends StatelessWidget {
     );
   }
 
-  Widget submitButton() {
+  Widget submitButton(BuildContext context) {
     return ElevatedButton(
       child: Container(
         width: 100,
@@ -199,6 +205,7 @@ class CadastroScreen extends StatelessWidget {
         if (formKey.currentState!.validate()) {
           formKey.currentState!.save();
           loginData.doSomething();
+          Navigator.pushNamed(context, PreferenciasScreen.route);
         }
       },
     );

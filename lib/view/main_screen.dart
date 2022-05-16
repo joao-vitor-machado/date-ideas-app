@@ -49,6 +49,7 @@ class MainScreen extends StatelessWidget {
     }
 
     return Scaffold(
+      backgroundColor: tema.background,
       drawer: DrawerWidget(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,

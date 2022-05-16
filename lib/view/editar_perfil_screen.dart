@@ -17,6 +17,7 @@ class EditarPerfilScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final tema = Theme.of(context).colorScheme;
     return Scaffold(
+      backgroundColor: tema.background,
       body: Container(
           padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
           child: ListView(

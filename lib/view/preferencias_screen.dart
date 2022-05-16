@@ -23,14 +23,11 @@ class PreferenciasScreen extends StatelessWidget {
     //RadioButtonBloc bloc = BlocProvider.of<RadioButtonBloc>(context);
     final tema = Theme.of(context).colorScheme;
     return Scaffold(
+      backgroundColor: tema.background,
       appBar: AppBar(
-        backgroundColor: Colors.red,
-        actions: [
-          GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: Icon(Icons.arrow_back, color: tema.primary,))
-        ],
-      ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          foregroundColor: tema.primary),
       body: Container(
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
           child: ListView(children: [

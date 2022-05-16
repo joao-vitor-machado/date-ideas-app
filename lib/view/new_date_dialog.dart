@@ -13,6 +13,7 @@ class NewDateDialog extends StatelessWidget {
     DateTime data = DateTime.now();
 
     return Dialog(
+      backgroundColor: tema.background,
       elevation: 2,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
