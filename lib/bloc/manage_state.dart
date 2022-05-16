@@ -4,6 +4,8 @@ class LoginState {
   final String name;
   bool get isValidName => name.isNotEmpty;
 
+  final double age;
+
   final String username;
   bool get isValidUsername => username.isNotEmpty;
 
@@ -14,6 +16,7 @@ class LoginState {
 
   LoginState({
     this.name = "",
+    this.age = 0,
     this.username = "",
     this.password = "",
     this.formStatus = const InitialFormStatus(),
@@ -21,12 +24,14 @@ class LoginState {
 
   LoginState copyWith({
     String? name,
+    double? age,
     String? username,
     String? password,
     FormSubmissionStatus? formStatus,
   }) {
     return LoginState(
       name: name ?? this.name,
+      age: age ?? this.age,
       username: username ?? this.username,
       password: password ?? this.password,
       formStatus: formStatus ?? this.formStatus,

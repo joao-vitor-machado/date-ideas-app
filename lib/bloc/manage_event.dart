@@ -6,6 +6,12 @@ class LoginNameChanged extends LoginEvent {
   LoginNameChanged({required this.name});
 }
 
+class LoginAgeChanged extends LoginEvent {
+  final double age;
+
+  LoginAgeChanged({required this.age});
+}
+
 class LoginUsernameChanged extends LoginEvent {
   final String username;
 

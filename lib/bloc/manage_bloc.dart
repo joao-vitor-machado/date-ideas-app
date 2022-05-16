@@ -17,6 +17,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(state.copyWith(name: event.name));
 
       //username updated
+    } else if (event is LoginAgeChanged) {
+      emit(state.copyWith(age: event.age));
+
+      //password updated
     } else if (event is LoginUsernameChanged) {
       emit(state.copyWith(username: event.username));
 

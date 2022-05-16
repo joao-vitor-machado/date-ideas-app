@@ -14,7 +14,7 @@ class CadastroScreen extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final LoginData loginData = LoginData();
 
-  final SliderBar sliderBar = const SliderBar();
+  final SliderContext sliderBar = SliderContext();
 
   CadastroScreen({Key? key}) : super(key: key);
 
@@ -60,9 +60,6 @@ class CadastroScreen extends StatelessWidget {
                 nameFormField(context),
                 titulo(context, "Idade"),
                 sliderBar,
-                const SizedBox(
-                  height: 20,
-                ),
                 titulo(context, "Username"),
                 usernameFormField(context),
                 titulo(context, "Senha"),

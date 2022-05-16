@@ -8,7 +8,7 @@ class EditarPerfilScreen extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final LoginData loginData = LoginData();
 
-  final SliderBar sliderBar = const SliderBar();
+  final SliderContext sliderBar = SliderContext();
 
   EditarPerfilScreen({Key? key}) : super(key: key);
 
