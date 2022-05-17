@@ -12,9 +12,7 @@ class CadastroScreen extends StatelessWidget {
   static const route = "/cadastro";
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final LoginData loginData = LoginData();
-
-  final SliderContext sliderBar = SliderContext();
+  final SliderBar sliderBar = SliderBar();
 
   CadastroScreen({Key? key}) : super(key: key);
 
@@ -28,7 +26,7 @@ class CadastroScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: BlocProvider(
-        create: (context) => LoginBloc(),
+        create: (context) => SignupBloc(),
         child: Container(
             padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
             child: ListView(
@@ -43,7 +41,7 @@ class CadastroScreen extends StatelessWidget {
   }
 
   Widget loginForm(BuildContext context) {
-    return BlocListener<LoginBloc, LoginState>(
+    return BlocListener<SignupBloc, SignupState>(
         listener: (context, state) {
           final formStatus = state.formStatus;
           if (formStatus is SubmissionFailed) {
@@ -75,15 +73,15 @@ class CadastroScreen extends StatelessWidget {
     final tema = Theme.of(context).colorScheme;
     return Column(
       children: [
-        BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+        BlocBuilder<SignupBloc, SignupState>(builder: (context, state) {
           return TextFormField(
             keyboardType: TextInputType.name,
             validator: (value) =>
                 state.isValidName ? null : 'Insira um nome válido',
             onChanged: (value) =>
-                context.read<LoginBloc>().add(LoginNameChanged(name: value)),
+                context.read<SignupBloc>().add(SignupNameChanged(name: value)),
             // onSaved: (String? inValue) {
-            //   loginData.name = inValue ?? "";
+            //   signupData.name = inValue ?? "";
             // },
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
@@ -106,16 +104,16 @@ class CadastroScreen extends StatelessWidget {
 
     return Column(
       children: [
-        BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+        BlocBuilder<SignupBloc, SignupState>(builder: (context, state) {
           return TextFormField(
             keyboardType: TextInputType.name,
             validator: (value) =>
                 state.isValidUsername ? null : 'Insira um username válido',
             onChanged: (value) => context
-                .read<LoginBloc>()
-                .add(LoginUsernameChanged(username: value)),
+                .read<SignupBloc>()
+                .add(SignupUsernameChanged(username: value)),
             // onSaved: (String? inValue) {
-            //   loginData.username = inValue ?? "";
+            //   signupData.username = inValue ?? "";
             // },
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
@@ -138,17 +136,17 @@ class CadastroScreen extends StatelessWidget {
 
     return Column(
       children: [
-        BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+        BlocBuilder<SignupBloc, SignupState>(builder: (context, state) {
           return TextFormField(
             obscureText: true,
             validator: (value) => state.isValidPassword
                 ? null
                 : 'Sua senha deve ter no mínimo 6 caracteres',
             onChanged: (value) => context
-                .read<LoginBloc>()
-                .add(LoginPasswordChanged(password: value)),
+                .read<SignupBloc>()
+                .add(SignupPasswordChanged(password: value)),
             // onSaved: (String? inValue) {
-            //   loginData.password = inValue ?? "";
+            //   signupData.password = inValue ?? "";
             // },
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
@@ -167,7 +165,7 @@ class CadastroScreen extends StatelessWidget {
   }
 
   Widget submitButton(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+    return BlocBuilder<SignupBloc, SignupState>(builder: (context, state) {
       return state.formStatus is FormSubmitting
           ? CircularProgressIndicator()
           : ElevatedButton(
@@ -192,7 +190,8 @@ class CadastroScreen extends StatelessWidget {
               ),
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  context.read<LoginBloc>().add(LoginSubmitted());
+                  context.read<SignupBloc>().add(
+                      SignupSubmitted(data: context.read<SignupBloc>().state));
                   Navigator.pushNamed(context, PreferenciasScreen.route);
                 }
               },

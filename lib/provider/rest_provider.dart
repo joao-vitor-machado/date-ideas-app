@@ -1,28 +1,30 @@
-// import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/manage_state.dart';
 
-// import 'package:trabalho_fibal_mob_2022/model/login.dart';
+import 'package:trabalho_fibal_mob_2022/model/login.dart';
 
-// class RestServer {
-//   // Atributo que irá afunilar todas as consultas
-//   static RestServer helper = RestServer._createInstance();
+class RestServer {
+  // Atributo que irá afunilar todas as consultas
+  static RestServer helper = RestServer._createInstance();
 
-//   // Construtor privado
-//   RestServer._createInstance();
+  // Construtor privado
+  RestServer._createInstance();
 
-//   final Dio _dio = Dio();
-//   String prefixUrl = "https://date-ideas-app-default-rtdb.firebaseio.com/";
-//   String suffixUrl = "/.json";
+  final Dio _dio = Dio();
+  String prefixUrl = "https://date-ideas-app-default-rtdb.firebaseio.com/";
+  String suffixUrl = "/.json";
 
-//   Future<LoginData> getData() async {
-//     Response response = await _dio.get(
-//         prefixUrl + LoginData + suffixUrl); //recebe o json, transforma em map
-//     return LoginData.fromMap(response.data);
-//   }
+  Future<int> insertSignupData(SignupState signupData) async {
+    try {
+      Response response = await _dio.post(
+        prefixUrl + suffixUrl,
+        data: signupData.toMap(),
+      );
+    } catch (error) {
+      print(error);
+      return 400;
+    }
 
-//   Future<int> insertLoginData(LoginData loginData) async {
-//     Response response = await _dio.post(
-//       prefixUrl + suffixUrl,
-//       data: loginData.toMap(),
-//     );
-//   }
-// }
+    return 200;
+  }
+}

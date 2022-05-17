@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trabalho_fibal_mob_2022/view/login_screen.dart';
+import 'bloc/slider_bloc.dart';
+import 'bloc/slider_state.dart';
 import 'view/cadastro_screen.dart';
 import 'view/preferencias_screen.dart';
 import 'view/editar_perfil_screen.dart';
@@ -7,7 +10,11 @@ import 'view/editar_preferencias_screen.dart';
 import 'package:trabalho_fibal_mob_2022/view/main_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider<SliderBloc>(
+      create: (_) => SliderBloc(SliderState()),
+    ),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

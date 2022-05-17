@@ -8,19 +8,6 @@ import 'package:trabalho_fibal_mob_2022/bloc/slider_state.dart';
 
 import '../bloc/manage_event.dart';
 
-class SliderContext extends StatelessWidget {
-  SliderContext({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return BlocProvider(
-      create: (_) => SliderBloc(SliderState()),
-      child: SliderBar(),
-    );
-  }
-}
-
 class SliderBar extends StatelessWidget {
   SliderBar({Key? key}) : super(key: key);
 
@@ -45,7 +32,7 @@ class SliderBar extends StatelessWidget {
                   .round()
                   .toString(),
               onChanged: (value) {
-                context.read<LoginBloc>().add(LoginAgeChanged(age: value));
+                context.read<SignupBloc>().add(SignupAgeChanged(age: value));
                 context.read<SliderBloc>().add(ChangeNumber(value: value));
               }),
           const SizedBox(

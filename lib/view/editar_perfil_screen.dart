@@ -6,9 +6,9 @@ class EditarPerfilScreen extends StatelessWidget {
   static const route = "/editar_perfil";
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final LoginData loginData = LoginData();
+  final SignupData signupData = SignupData();
 
-  final SliderContext sliderBar = SliderContext();
+  final SliderBar sliderBar = SliderBar();
 
   EditarPerfilScreen({Key? key}) : super(key: key);
 
@@ -101,7 +101,7 @@ class EditarPerfilScreen extends StatelessWidget {
     return TextFormField(
       keyboardType: TextInputType.name,
       onSaved: (String? inValue) {
-        loginData.name = inValue ?? "";
+        signupData.name = inValue ?? "";
       },
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
@@ -126,7 +126,7 @@ class EditarPerfilScreen extends StatelessWidget {
         return null;
       },
       onSaved: (String? inValue) {
-        loginData.username = inValue ?? "";
+        signupData.username = inValue ?? "";
       },
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
@@ -151,7 +151,7 @@ class EditarPerfilScreen extends StatelessWidget {
         return null;
       },
       onSaved: (String? inValue) {
-        loginData.password = inValue ?? "";
+        signupData.password = inValue ?? "";
       },
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
@@ -188,7 +188,7 @@ class EditarPerfilScreen extends StatelessWidget {
       onPressed: () {
         if (formKey.currentState!.validate()) {
           formKey.currentState!.save();
-          //loginData.doSomething();
+          //signupData.doSomething();
         }
       },
     );

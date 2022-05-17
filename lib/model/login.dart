@@ -1,4 +1,4 @@
-class LoginData {
+class SignupData {
   String _name = "";
   double _age = 0;
   String _username = "";
@@ -6,14 +6,14 @@ class LoginData {
 
   bool confirmed = false;
 
-  LoginData() {
+  SignupData() {
     _name = "";
     _age = 0;
     _username = "";
     _password = "";
   }
 
-  LoginData.fromMap(map) {
+  SignupData.fromMap(map) {
     _name = map["name"];
     _age = map["age"];
     _username = map["username"];
@@ -58,7 +58,7 @@ class LoginData {
     return map;
   }
 
-  // LoginData(
+  // signupData(
   //     {required this.name,
   //     required this.age,
   //     required this.username,

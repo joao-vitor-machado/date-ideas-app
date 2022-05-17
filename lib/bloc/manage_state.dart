@@ -1,6 +1,6 @@
 import 'package:trabalho_fibal_mob_2022/bloc/manage_submission.dart';
 
-class LoginState {
+class SignupState {
   final String name;
   bool get isValidName => name.isNotEmpty;
 
@@ -14,7 +14,7 @@ class LoginState {
 
   final FormSubmissionStatus formStatus;
 
-  LoginState({
+  SignupState({
     this.name = "",
     this.age = 0,
     this.username = "",
@@ -22,19 +22,29 @@ class LoginState {
     this.formStatus = const InitialFormStatus(),
   });
 
-  LoginState copyWith({
+  SignupState copyWith({
     String? name,
     double? age,
     String? username,
     String? password,
     FormSubmissionStatus? formStatus,
   }) {
-    return LoginState(
+    return SignupState(
       name: name ?? this.name,
       age: age ?? this.age,
       username: username ?? this.username,
       password: password ?? this.password,
       formStatus: formStatus ?? this.formStatus,
     );
+  }
+
+  Map toMap() {
+    var map = Map<String, dynamic>();
+    map["name"] = name;
+    map["age"] = age;
+    map["username"] = username;
+    map["password"] = password;
+
+    return map;
   }
 }

@@ -1,27 +1,33 @@
-abstract class LoginEvent {}
+import 'package:trabalho_fibal_mob_2022/bloc/manage_state.dart';
 
-class LoginNameChanged extends LoginEvent {
+abstract class SignupEvent {}
+
+class SignupNameChanged extends SignupEvent {
   final String name;
 
-  LoginNameChanged({required this.name});
+  SignupNameChanged({required this.name});
 }
 
-class LoginAgeChanged extends LoginEvent {
+class SignupAgeChanged extends SignupEvent {
   final double age;
 
-  LoginAgeChanged({required this.age});
+  SignupAgeChanged({required this.age});
 }
 
-class LoginUsernameChanged extends LoginEvent {
+class SignupUsernameChanged extends SignupEvent {
   final String username;
 
-  LoginUsernameChanged({required this.username});
+  SignupUsernameChanged({required this.username});
 }
 
-class LoginPasswordChanged extends LoginEvent {
+class SignupPasswordChanged extends SignupEvent {
   final String password;
 
-  LoginPasswordChanged({required this.password});
+  SignupPasswordChanged({required this.password});
 }
 
-class LoginSubmitted extends LoginEvent {}
+class SignupSubmitted extends SignupEvent {
+  final SignupState data;
+
+  SignupSubmitted({required this.data});
+}
