@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "713678307379",
+    "firebase_url": "https://date-ideas-app-default-rtdb.firebaseio.com",
+    "project_id": "date-ideas-app",
+    "storage_bucket": "date-ideas-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713678307379:android:40fd4485d9e9e4627ae346",
+        "android_client_info": {
+          "package_name": "com.example.trabalho_fibal_mob_2022"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713678307379-shptfadpleqms2tbiavhj381lm0m2bhe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX6a9PMNA5MAvgQzuKZdyAp3vXV18aSyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713678307379-shptfadpleqms2tbiavhj381lm0m2bhe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
