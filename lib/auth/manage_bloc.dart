@@ -1,11 +1,8 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
-import 'package:trabalho_fibal_mob_2022/bloc/manage_event.dart';
-import 'package:trabalho_fibal_mob_2022/bloc/manage_state.dart';
-import 'package:trabalho_fibal_mob_2022/bloc/manage_submission.dart';
-
-import '../provider/rest_provider.dart';
+import 'package:trabalho_fibal_mob_2022/auth/manage_event.dart';
+import 'package:trabalho_fibal_mob_2022/auth/manage_state.dart';
+import 'package:trabalho_fibal_mob_2022/auth/manage_submission.dart';
+import 'package:trabalho_fibal_mob_2022/provider/rest_provider.dart';
 
 class SignupBloc extends Bloc<SignupEvent, SignupState> {
   SignupBloc() : super(SignupState()) {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trabalho_fibal_mob_2022/bloc/manage_bloc.dart';
-import 'package:trabalho_fibal_mob_2022/bloc/manage_event.dart';
-import 'package:trabalho_fibal_mob_2022/bloc/manage_state.dart';
-import 'package:trabalho_fibal_mob_2022/bloc/manage_submission.dart';
+import 'package:trabalho_fibal_mob_2022/auth/manage_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/auth/manage_event.dart';
+import 'package:trabalho_fibal_mob_2022/auth/manage_state.dart';
+import 'package:trabalho_fibal_mob_2022/auth/manage_submission.dart';
 import 'package:trabalho_fibal_mob_2022/model/login.dart';
 import 'package:trabalho_fibal_mob_2022/view/preferencias_screen.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/slider_bar_widget.dart';

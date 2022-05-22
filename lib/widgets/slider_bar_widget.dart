@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trabalho_fibal_mob_2022/bloc/manage_bloc.dart';
-import 'package:trabalho_fibal_mob_2022/bloc/manage_state.dart';
+import 'package:trabalho_fibal_mob_2022/auth/manage_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/auth/manage_event.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/slider_bloc.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/slider_event.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/slider_state.dart';
-
-import '../bloc/manage_event.dart';
 
 class SliderBar extends StatelessWidget {
   SliderBar({Key? key}) : super(key: key);
