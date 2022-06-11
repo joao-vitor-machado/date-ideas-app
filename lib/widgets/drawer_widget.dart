@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/auth_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/auth_event.dart';
 import 'package:trabalho_fibal_mob_2022/view/editar_perfil_screen.dart';
 import 'package:trabalho_fibal_mob_2022/view/editar_preferencias_screen.dart';
 import 'package:trabalho_fibal_mob_2022/view/login_screen.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key? key}) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -15,33 +16,39 @@ class DrawerWidget extends StatelessWidget {
 
     var itemsMenu = [
       GestureDetector(
-        onTap: () => Navigator.pushNamed(context, EditarPreferenciasScreen.route),
+        onTap: () =>
+            Navigator.pushNamed(context, EditarPreferenciasScreen.route),
         child: ListTile(
-          title: Text("Editar Preferências", style: TextStyle(color: tema.primary, fontSize: 20),),
+          title: Text(
+            "Editar Preferências",
+            style: TextStyle(color: tema.primary, fontSize: 20),
+          ),
           leading: Icon(
             Icons.favorite,
             color: tema.primary,
           ),
-
         ),
       ),
       GestureDetector(
         onTap: () => Navigator.pushNamed(context, EditarPerfilScreen.route),
         child: ListTile(
-            title: Text("Editar Perfil", style: TextStyle(color: tema.primary, fontSize: 20)),
-            leading: Icon(Icons.person, color: tema.primary,)
-
-        ),
+            title: Text("Editar Perfil",
+                style: TextStyle(color: tema.primary, fontSize: 20)),
+            leading: Icon(
+              Icons.person,
+              color: tema.primary,
+            )),
       ),
       ListTile(
-        title: Text("Modo Escuro", style: TextStyle(color: tema.primary, fontSize: 20)),
+        title: Text("Modo Escuro",
+            style: TextStyle(color: tema.primary, fontSize: 20)),
         leading: Icon(
           Icons.dark_mode,
           color: tema.primary,
         ),
         trailing: Switch(
           value: false,
-          onChanged: (value){},
+          onChanged: (value) {},
         ),
       ),
     ];
@@ -73,15 +80,22 @@ class DrawerWidget extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text("Settings",
+                        Text(
+                          "Settings",
                           style: TextStyle(
                               color: tema.secondary,
                               fontSize: 32,
                               fontFamily: "Roboto",
-                              fontWeight: FontWeight.bold
-                          ),),
-                        SizedBox(width: 5,),
-                        Icon(Icons.settings, color: tema.secondary, size:40,),
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          Icons.settings,
+                          color: tema.secondary,
+                          size: 40,
+                        ),
                       ],
                     ),
                   ),
@@ -95,27 +109,33 @@ class DrawerWidget extends StatelessWidget {
               children: ListTile.divideTiles(
                   color: tema.tertiary,
                   context: context,
-                  tiles: itemsMenu.map((e) => ListTile(
-                      title: e
-                  )
-                  )).toList(),
+                  tiles: itemsMenu.map((e) => ListTile(title: e))).toList(),
             ),
           ),
           SizedBox(
-            height: screen.height * 0.18  ,
+            height: screen.height * 0.18,
           ),
           Container(
             width: screen.width * 0.7,
             child: GestureDetector(
-              onTap: () => Navigator.pushNamed(context, LoginScreen.route),
+              onTap: () {
+                BlocProvider.of<AuthBloc>(context).add(Logout());
+                Navigator.pushNamed(context, LoginScreen.route);
+              },
               child: ListTile(
                 title: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Logout", style: TextStyle(color: Colors.red, fontSize: 20)),
-                    SizedBox(width: 5,),
-                    Icon(Icons.logout, color: Colors.red,)
+                    Text("Logout",
+                        style: TextStyle(color: Colors.red, fontSize: 20)),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Icon(
+                      Icons.logout,
+                      color: Colors.red,
+                    )
                   ],
                 ),
               ),

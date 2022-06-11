@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/auth_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/auth_event.dart';
 import 'package:trabalho_fibal_mob_2022/view/cadastro_screen.dart';
 import 'package:trabalho_fibal_mob_2022/view/main_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   static const route = "/";
-  const LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
+  var username = TextEditingController();
+  var password = TextEditingController();
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final screen = MediaQuery.of(context);
@@ -50,8 +60,9 @@ class LoginScreen extends StatelessWidget {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           prefixIcon: Icon(Icons.account_circle),
-                          labelText: "username",
+                          labelText: "Email",
                           border: OutlineInputBorder()),
+                      controller: widget.username,
                     ),
                     SizedBox(
                       height: screen.size.height * 0.02,
@@ -66,6 +77,7 @@ class LoginScreen extends StatelessWidget {
                           prefixIcon: Icon(Icons.lock),
                           labelText: "password",
                           border: OutlineInputBorder()),
+                      controller: widget.password,
                     ),
                     Padding(
                       padding: EdgeInsets.all(8.0),
@@ -96,8 +108,11 @@ class LoginScreen extends StatelessWidget {
                           "Login",
                           style: TextStyle(color: tema.secondary),
                         ),
-                        onPressed: () =>
-                            Navigator.pushNamed(context, MainScreen.route)),
+                        onPressed: () {
+                          BlocProvider.of<AuthBloc>(context).add(LoginUser(
+                              username: widget.username.text,
+                              password: widget.password.text));
+                        })
                   ],
                 ),
               ),

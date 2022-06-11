@@ -1,4 +1,5 @@
 class SignupData {
+  String _uuid = "";
   String _name = "";
   double _age = 0;
   String _username = "";
@@ -6,7 +7,8 @@ class SignupData {
 
   bool confirmed = false;
 
-  SignupData() {
+  SignupData({uuid = ""}) {
+    _uuid = uuid == null ? "" : uuid;
     _name = "";
     _age = 0;
     _username = "";
@@ -14,12 +16,14 @@ class SignupData {
   }
 
   SignupData.fromMap(map) {
+    _uuid = map["uuid"];
     _name = map["name"];
     _age = map["age"];
     _username = map["username"];
     _password = map["password"];
   }
 
+  String get uuid => _uuid;
   String get name => _name;
   double get age => _age;
   String get username => _username;

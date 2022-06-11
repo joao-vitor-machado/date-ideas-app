@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/auth_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/auth_event.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/manage_bloc.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/manage_event.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/manage_state.dart';
@@ -58,7 +60,7 @@ class CadastroScreen extends StatelessWidget {
                 nameFormField(context),
                 titulo(context, "Idade"),
                 sliderBar,
-                titulo(context, "Username"),
+                titulo(context, "Email"),
                 usernameFormField(context),
                 titulo(context, "Senha"),
                 passwordFormField(context),
@@ -120,7 +122,7 @@ class CadastroScreen extends StatelessWidget {
                   borderSide: BorderSide(
                 color: tema.primary,
               )),
-              hintText: "Username",
+              hintText: "Email",
             ),
           );
         }),
@@ -192,6 +194,10 @@ class CadastroScreen extends StatelessWidget {
                 if (formKey.currentState!.validate()) {
                   context.read<SignupBloc>().add(
                       SignupSubmitted(data: context.read<SignupBloc>().state));
+                  context.read<AuthBloc>().add(RegisterUser(
+                        username: context.read<SignupBloc>().state.username,
+                        password: context.read<SignupBloc>().state.password,
+                      ));
                   Navigator.pushNamed(context, PreferenciasScreen.route);
                 }
               },
