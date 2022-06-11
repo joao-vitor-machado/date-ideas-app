@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:trabalho_fibal_mob_2022/bloc/manage_state.dart';
-
+import 'package:trabalho_fibal_mob_2022/auth/manage_state.dart';
 import 'package:trabalho_fibal_mob_2022/model/login.dart';
 
 class RestServer {

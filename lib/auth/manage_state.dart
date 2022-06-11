@@ -1,4 +1,4 @@
-import 'package:trabalho_fibal_mob_2022/bloc/manage_submission.dart';
+import 'package:trabalho_fibal_mob_2022/auth/manage_submission.dart';
 
 class SignupState {
   final String name;
