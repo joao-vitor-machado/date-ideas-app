@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/auth_bloc.dart';
 import 'package:trabalho_fibal_mob_2022/bloc/auth_state.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/monitor_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/storage_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/storage_state.dart';
 import 'package:trabalho_fibal_mob_2022/view/login_screen.dart';
 import 'bloc/slider_bloc.dart';
 import 'bloc/slider_state.dart';
@@ -16,6 +19,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MultiBlocProvider(providers: [
+    BlocProvider<MonitorBloc>(create: (_) => MonitorBloc()),
+    BlocProvider<StorageBloc>(create: (_) => StorageBloc()),
     BlocProvider<SliderBloc>(
       create: (_) => SliderBloc(SliderState()),
     ),

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/storage_bloc.dart';
+import 'package:trabalho_fibal_mob_2022/bloc/storage_event.dart';
+import 'package:trabalho_fibal_mob_2022/model/preferencias/Preferencias_collection.dart';
+import 'package:trabalho_fibal_mob_2022/model/preferencias/Salgado.dart';
 import 'package:trabalho_fibal_mob_2022/view/main_screen.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/checkbox_widget.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/radio_button_widget.dart';
 import 'package:trabalho_fibal_mob_2022/widgets/drop_down_widget.dart';
-import '../model/preferencias.dart';
+import '../bloc/storage_state.dart';
+import '../model/preferencias/Preferencia.dart';
 
 class PreferenciasScreen extends StatelessWidget {
   static const route = "/preferencias";
@@ -12,19 +18,19 @@ class PreferenciasScreen extends StatelessWidget {
 
   PreferenciasScreen({Key? key}) : super(key: key);
 
-  final CheckBox checkBox = const CheckBox();
+  final CheckBox checkBox = CheckBox();
   final RadioButton radioButton1 = RadioButton();
   final RadioButton radioButton2 = RadioButton();
   final DropDown dropDown = const DropDown();
 
-  List<String> salgados = [
-    "Salgadinhos",
-    "Comida Congelada",
-    "Fast Food",
-    "Comida Árabe",
-    "Comida Japonesa",
-    "Comida Italiana",
-    "Pizza"
+  List<Salgado> salgados = [
+    Salgado(nome: "Salgadinhos"),
+    Salgado(nome: "Comida Congelada"),
+    Salgado(nome: "Fast Food"),
+    Salgado(nome: "Comida Árabe"),
+    Salgado(nome: "Comida Japonesa"),
+    Salgado(nome: "Comida Italiana"),
+    Salgado(nome: "Pizza"),
   ];
 
   List<String> bebidasNaoAlc = ["Água", "Suco", "Refrigerante"];
@@ -48,6 +54,8 @@ class PreferenciasScreen extends StatelessWidget {
     "Fazer Compras",
     "Ir ao Cinema"
   ];
+
+  PreferenciasCollection preferencias = PreferenciasCollection();
 
   @override
   Widget build(BuildContext context) {
@@ -74,34 +82,36 @@ class PreferenciasScreen extends StatelessWidget {
             ),
             titulo(context, "Salgados"),
             mapList(context, "salgado", salgados),
-            titulo(context, "Bebidas Alcoolicas?"),
-            Container(
-              child: radioButton1,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            titulo(context, "Bebidas"),
-            mapList(context, "bebidaNaoAlc", bebidasNaoAlc),
-            titulo(context, "Doces"),
-            mapList(context, "doce", doces),
-            titulo(context, "Atividades"),
-            mapList(context, "atividade", atividades),
-            titulo(context, "Escolher Gênero?"),
-            Container(
-              child: radioButton2,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            titulo(context, "Gêneros Favoritos"),
-            Container(
-              child: dropDown,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            submitButton(context),
+            // titulo(context, "Bebidas Alcoolicas?"),
+            // Container(
+            //   child: radioButton1,
+            // ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+            // titulo(context, "Bebidas"),
+            // mapList(context, "bebidaNaoAlc", bebidasNaoAlc),
+            // titulo(context, "Doces"),
+            // mapList(context, "doce", doces),
+            // titulo(context, "Atividades"),
+            // mapList(context, "atividade", atividades),
+            // titulo(context, "Escolher Gênero?"),
+            // Container(
+            //   child: radioButton2,
+            // ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+            // titulo(context, "Gêneros Favoritos"),
+            // Container(
+            //   child: dropDown,
+            // ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+
+            BlocBuilder<StorageBloc, StorageState>(
+                builder: ((context, state) => submitButton(context))),
             const SizedBox(
               height: 20,
             ),
@@ -109,20 +119,20 @@ class PreferenciasScreen extends StatelessWidget {
     );
   }
 
-  Widget enableCheckBox() {
-    return Column(
-      children: salgados.map((salgado) {
-        Preferencias preferencias = Preferencias(name: salgado);
-        return Row(
-          children: [
-            const CheckBox(),
-            Text(preferencias.name,
-                style: TextStyle(fontSize: 18, color: Colors.grey)),
-          ],
-        );
-      }).toList(),
-    );
-  }
+  // Widget enableCheckBox() {
+  //   return Column(
+  //     children: salgados.map((salgado) {
+  //       Preferencias preferencias = Preferencias(name: salgado);
+  //       return Row(
+  //         children: [
+  //           const CheckBox(),
+  //           Text(preferencias.name,
+  //               style: TextStyle(fontSize: 18, color: Colors.grey)),
+  //         ],
+  //       );
+  //     }).toList(),
+  //   );
+  // }
 
   Widget submitButton(BuildContext context) {
     final tema = Theme.of(context).colorScheme;
@@ -150,6 +160,8 @@ class PreferenciasScreen extends StatelessWidget {
         ),
       ),
       onPressed: () {
+        BlocProvider.of<StorageBloc>(context)
+            .add(SubmitEvent(pref: preferencias));
         Navigator.pushNamed(context, MainScreen.route);
       },
     );
@@ -174,18 +186,26 @@ class PreferenciasScreen extends StatelessWidget {
     );
   }
 
-  Widget mapList(BuildContext context, String nome, List<String> lista) {
+  Widget mapList(BuildContext context, String nome, List<Preferencia> lista) {
     final tema = Theme.of(context).colorScheme;
+
+    for (int i = 0; i < lista.length; i++) {
+      preferencias.insertPreferenciaOfId(i.toString(), lista[i]);
+    }
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
         child: Column(
-          children: lista.map((nome) {
-            Preferencias preferencias = Preferencias(name: nome);
+          children: preferencias.prefList.map((pref) {
             return Row(
               children: [
-                const CheckBox(),
-                Text(preferencias.name,
+                CheckBox(
+                  func: () {
+                    pref.isPreferencia = !pref.isPreferencia;
+                    print(pref.nome + ":" + pref.isPreferencia.toString());
+                  },
+                ),
+                Text(pref.nome,
                     style: TextStyle(fontSize: 18, color: Colors.grey)),
               ],
             );

@@ -6,7 +6,9 @@ class Unauthenticated extends AuthState {}
 
 class Authenticated extends AuthState {
   SignupData user;
-  Authenticated({required this.user});
+  Authenticated({required this.user}) {
+    print(user);
+  }
 }
 
 class AuthError extends AuthState {
